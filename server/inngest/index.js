@@ -4,7 +4,11 @@ import User from "../models/User.js";
 
 
 // Create a client to send and receive events
-export const inngest = new Inngest({ id: "movie-ticket-booking" });
+export const inngest = new Inngest({
+  id: "movie-ticket-booking",
+  eventKey: process.env.INNGEST_EVENT_KEY,
+  signingKey: process.env.INNGEST_SIGNING_KEY,
+});
 
 // Inngest function to save user data to a database
 const syncUserCreation = inngest.createFunction(
